@@ -385,14 +385,14 @@ const manageMove = (event, country, code, status, notes = '') => {
 
 	tooltip.classed('over', true)
 
-    let left = event.clientX /*+ atomEl.getBoundingClientRect().left*/;
+    let left = width > 620 ? event.clientX + atomEl.getBoundingClientRect().left : event.clientX;
     let top = event.clientY + -atomEl.getBoundingClientRect().top;
 
     let tWidth = tooltip.node().getBoundingClientRect().width;
     let tHeight = tooltip.node().getBoundingClientRect().height;
 
-    let posX = left - (tWidth /2);
-    let posY = top + svgY + tHeight;
+    let posX = width > 620 ? left - (tWidth /2) : left - atomEl.getBoundingClientRect().left -( tWidth /2);
+    let posY = top /*+ svgY*/ + tHeight;
 
     //if(posX + tWidth > width) posX = width - tWidth;
     //if(posX < 0) posX = 0;
